@@ -682,6 +682,7 @@ class HttpParser:
                     if self.chunk_parser.state == chunkParserStates.COMPLETE:
                         self.body = self.chunk_parser.body
                         self.state = httpParserStates.COMPLETE
+                        self.chunk_parser.__init__()
                     more = False
             else:
                 more, raw = self.process(raw)
